@@ -21,8 +21,13 @@ class Books {
             }))
     }
 
-    
+    static list(req, res) {
+        return Book 
+            .findAll()
+            .then(books => res.status(200).send(books))
+    }
 
+    
 }
 
 export default Books
