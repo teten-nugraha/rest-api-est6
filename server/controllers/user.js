@@ -1,5 +1,6 @@
 import model from '../models';
 
+
 const { User } = model;
 
 class Users {
