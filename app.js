@@ -1,9 +1,13 @@
 import http from 'http'
 import express from 'express'
 
+import jwt from 'jsonwebtoken'
+import passport from 'passport'
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import routes from './server/routes';
+
+require('./server/config/passport')(passport);
 
 const hostname = '127.0.0.1';
 const port = 3000;
