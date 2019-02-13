@@ -12,4 +12,5 @@ export default (app) => {
     app.post('/api/users/:userId/books', Books.create)
     app.get('/api/books', Books.list)
     app.put('/api/books/:bookId', Books.modify)
+    app.delete('/api/books/:bookId', Books.delete)
 };

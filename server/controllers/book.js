@@ -52,6 +52,27 @@ class Books {
                 .catch(error => res.status(400).send(error))
             })
     }
+
+    static delete(req, res) {
+        return Book 
+            .findById(req.params.bookId)
+            .then(book => {
+                if(!book){
+                    return res.status(400).send({
+                        message:'Book Not Found'
+                    })
+                }
+                return book 
+                    .destroy()
+                    .then(() => res.status(200).send({
+                        message: 'Book successfully deleted'
+                    }))
+                    .catch(error => res.status(400).send(error))
+            })
+            .catch(error => res.status(400).send(error))
+            
+    }
+
 }
 
 export default Books
