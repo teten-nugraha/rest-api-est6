@@ -1,5 +1,6 @@
 import model from '../models';
 
+
 const { Book } = model;
 
 class Books {

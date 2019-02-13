@@ -1,6 +1,9 @@
 import Users from '../controllers/user';
 import Books from '../controllers/book';
 
+import passport from 'passport';
+require('../config/passport')(passport);
+
 export default (app) => {
 
     app.get('/api', (req, res) => res.status(200).send({
@@ -11,8 +14,8 @@ export default (app) => {
     app.post('/api/users/signin', Users.signIn); // API route for user to signup
     
 
-    app.post('/api/users/:userId/books', Books.create)
-    app.get('/api/books', Books.list)
-    app.put('/api/books/:bookId', Books.modify)
-    app.delete('/api/books/:bookId', Books.delete)
+    app.post('/api/users/:userId/books',passport.authenticate('jwt', { session: false}), Books.create)
+    app.get('/api/books',passport.authenticate('jwt', { session: false}), Books.list)
+    app.put('/api/books/:bookId', passport.authenticate('jwt', { session: false}),  Books.modify)
+    app.delete('/api/books/:bookId', passport.authenticate('jwt', { session: false}),  Books.delete)
 };
